@@ -1,5 +1,13 @@
+
+
+
+**CONFIGURE:**
+- ÖNCELİKLE adb path ayarlamanız gereklidir. path;C:\adb
+- CONCRATES SYSTEM VARIABLE ekleyin değerini recovery imajlarını indidiğiniz klasörü giriniz. CONCRATES=C:\Concrates
+- custom recovery imajı isimleri cihazınızın fastboot menüsündeki product değişkini ismidir.  "*******_recovery.img"
+"örneğin joyeuse_recovery.img olarak adlandırdığınız imaj sadece Redmi Note 9 için çalışacaktır."
+
 **Custom Recovery Kaynakları;**  
-  
 [**TWRP Official - Devices**](https://twrp.me/Devices/)  
 **[PitchBlack Recovery Official Devices - PitchBlack Recovery Project](https://pitchblackrecovery.com/devices)  
 [PitchBlack Recovery Project download | SourceForge.net](https://sourceforge.net/projects/pbrp/)  
