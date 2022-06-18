@@ -11,15 +11,15 @@ echo 4. DIAG CDEV RMNET DPL QDSS ADB
 echo 5. DIAG DIAGMDM QDSS QDSSMDM CDEV DPL RMNET ADB
 
 set choice=
-set /p choice=SELECT DIAGNOSTIC MODE :
-if not '%choice%'=='' set choice=%choice:~0,1%
+set /p choice=SELECT DIAGNOSTIC MODE:
+::if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto CHOICE1
 if '%choice%'=='2' goto CHOICE2
 if '%choice%'=='3' goto CHOICE3
 if '%choice%'=='4' goto CHOICE4
 if '%choice%'=='5' goto CHOICE5
-echo "%choice%" is not valid please try again
-@timeout 2 > nul
+echo '%choice%' is not valid please try again
+@timeout 1 > nul
 cls
 goto start
 
@@ -45,7 +45,7 @@ adb shell "su -c setprop sys.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,
 goto end
 :end
 echo PLEASE FOLLOW DEVICE SCREEN AND GIVE ROOT PERMISSIONS
-@timeout 30
+@timeout 2
 cls
 goto start
 

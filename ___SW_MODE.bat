@@ -6,25 +6,25 @@ mode con:cols=60 lines=10
 color 0E
 :start
 
-@set _count=0
+@set count=0
 @for /f "tokens=1,*" %%G in ('fastboot devices') do @call :AddAndDisplayDevice %%G %%H
 @for /f "skip=1 tokens=1,*" %%G in ('adb devices') do @call :AddAndDisplayDevice %%G %%H
 
-@set /p _choice=Enter number from above menu:
-@if not defined _%_choice% @goto :BadSelection "%_choice%"
-@call :DoIt %_choice%
+@set /p choice=Enter number from above menu:
+@if not defined _%choice% @goto :BadSelection "%choice%"
+@call :DoIt %choice%
 rem @exit /b 0
 
 :AddAndDisplayDevice
-@set /a _count+=1
-@echo %_count%. %*
-@call :SetVar %_count% %1 %2
+@set /a count+=1
+@echo %count%. %*
+@call :SetVar %count% %1 %2
 @exit /b 0
 
 :BadSelection
 @rem Up to you whether to loop back and try again.
 cls
-@echo Bad choice: %_choice%
+@echo Bad choice: %choice%
 goto end
 @exit /b -1
 
@@ -44,12 +44,12 @@ echo 1. Reboot Android
 echo 2. Reboot Recovery
 echo 3. Reboot Fastboot
 
-@set /p _command=Enter number from above menu:
-if not '%_command%'=='' set _command=%_command:~0,1%
-if '%_command%'=='1' goto reboot
-if '%_command%'=='2' goto recovery
-if '%_command%'=='3' goto bootloader
-echo "%_command%" is not valid please try again
+@set /p selection=Enter number from above menu:
+if not '%selection%'=='' set selection=%selection:~0,1%
+if '%selection%'=='1' goto reboot
+if '%selection%'=='2' goto recovery
+if '%selection%'=='3' goto bootloader
+echo "%selection%" is not valid please try again
 rem goto end
 rem @exit /b 0
 

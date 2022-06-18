@@ -7,6 +7,8 @@
 @ECHO BOLUM LISTESI
 @PAUSE
 @adb shell ls -l /dev/block/bootdevice/by-name/
+::samsung 
+@adb shell ls -l /dev/block/by-name/
 
 @ECHO EFS YEDEKLE
 @PAUSE
@@ -22,37 +24,51 @@
 @adb shell dd if=/dev/block/bootdevice/by-name/modemst1 of=/sdcard/modemst1.img
 @adb shell dd if=/dev/block/bootdevice/by-name/modemst2 of=/sdcard/modemst2.img
 @adb shell dd if=/dev/block/bootdevice/by-name/persist of=/sdcard/persist.img
-@adb shell dd if=/dev/block/bootdevice/by-name/secdata  of=/sdcard/secdata.img
-::@adb shell dd if=/dev/block/bootdevice/by-name/vendor of=/sdcard/vendor.img
+::samsung exynos
+@adb shell "su -c dd if=/dev/block/by-name/efs of=/sdcard/efs.img"
+@adb shell "su -c dd if=/dev/block/by-name/m9kefs1 of=/sdcard/m9kefs1.img"
+@adb shell "su -c dd if=/dev/block/by-name/m9kefs2 of=/sdcard/m9kefs2.img"
+@adb shell "su -c dd if=/dev/block/by-name/m9kefs3 of=/sdcard/m9kefs3.img"
 
-::@adb pull /sdcard/NON-HLOS.bin %BackupFolder%
+
 @adb pull /sdcard/devinfo.img %BackupFolder%
 @adb pull /sdcard/fsc.img %BackupFolder%
 @adb pull /sdcard/fsg.img %BackupFolder%
 @adb pull /sdcard/keystore.img %BackupFolder%
-::@adb pull /sdcard/mdm1m9kefs1.img %BackupFolder%
-::@adb pull /sdcard/mdm1m9kefs2.img %BackupFolder%
-::@adb pull /sdcard/mdm1m9kefs3.img %BackupFolder%
-::@adb pull /sdcard/mdm1m9kefsc.img %BackupFolder%
 @adb pull /sdcard/modemst1.img %BackupFolder%
 @adb pull /sdcard/modemst2.img %BackupFolder%
 @adb pull /sdcard/persist.img %BackupFolder%
-@adb pull /sdcard/secdata.img %BackupFolder%
-::@adb pull /sdcard/vendor.img %BackupFolder%
+@adb pull /sdcard/NON-HLOS.bin %BackupFolder%
+@adb pull /sdcard/mdm1m9kefs1.img %BackupFolder%
+@adb pull /sdcard/mdm1m9kefs2.img %BackupFolder%
+@adb pull /sdcard/mdm1m9kefs3.img %BackupFolder%
+@adb pull /sdcard/mdm1m9kefsc.img %BackupFolder%
+::samsung exynos
+@adb pull /sdcard/efs.img %BackupFolder%
+@adb pull /sdcard/m9kefs1.img %BackupFolder%
+@adb pull /sdcard/m9kefs2.img %BackupFolder%
+@adb pull /sdcard/m9kefs3.img %BackupFolder%
+
 
 @ECHO EFS SIL
 @PAUSE
-@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/modemst1
-@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/modemst2
-@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/fsg
-::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/fsc
-::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/persist
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/devinfo
+::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/fsc
+@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/fsg
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/keystore
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/mdm1m9kefs1
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/mdm1m9kefs2
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/mdm1m9kefs3
 ::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/mdm1m9kefsc
+@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/modemst1
+@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/modemst2
+::@adb shell dd if=/dev/zero of=/dev/block/bootdevice/by-name/persist
+::samsung exynos
+@adb shell "su -c dd if=/dev/zero of=/dev/block/by-name/efs"
+@adb shell "su -c dd if=/dev/zero of=/dev/block/by-name/m9kefs1"
+@adb shell "su -c dd if=/dev/zero of=/dev/block/by-name/m9kefs2"
+@adb shell "su -c dd if=/dev/zero of=/dev/block/by-name/m9kefs3"
+
 
 @ECHO EFS YUKLE
 @PAUSE

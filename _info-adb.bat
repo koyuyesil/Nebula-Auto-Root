@@ -1,4 +1,4 @@
-@for /f "delims=" %%i in ('@adb shell getprop ro.system.build.product') do @set product=%%i
+@for /f "delims=" %%i in ('@adb shell getprop ro.build.product') do @set product=%%i
 @for /f "delims=" %%i in ('@adb shell getprop ro.system.build.id') do @set buildid=%%i
 @for /f "delims=" %%i in ('@adb shell getprop ro.system.build.version.release') do @set release=%%i
 @for /f "delims=" %%i in ('@adb shell getprop ro.system.build.version.sdk') do @set sdk=%%i
@@ -24,7 +24,7 @@
 
 @set summary="_info-adb-sum-%device%-%hwlevel%-%hwversion%-%buildid%-%incremental%-%cpuid%.txt"
 
-@echo PRODUCT	   :%product% > %summary%
+@echo PRODUCT      :%product% > %summary%
 @echo BUILD ID     :%buildid% >> %summary%
 @echo ANDROID      :%release% >> %summary%
 @echo SDK          :%sdk% >> %summary%
