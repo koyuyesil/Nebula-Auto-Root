@@ -46,57 +46,47 @@
 @echo BASEBAND     :%baseband% >> %summary%
 
 @echo off
-echo echo|set /p="ANDROID 4 SS IMEI 	:"
-adb shell "service call iphonesubinfo 1 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+::TRIM '.[:space:]'\)\' ==> space, ), dot, single quote
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 1 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android4ssimei=%%i
+echo ANDROID 4 SS IMEI  	: %android4ssimei% >> %summary%
 
-echo echo|set /p="ANDROID 4 DS IMEI0	:"
-adb shell "service call iphonesubinfo 1 i32 1 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 1 i32 1 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android4dsimei0=%%i
+echo ANDROID 4 DS IMEI0 	: %android4dsimei0% >> %summary%
 
-echo echo|set /p="ANDROID 4 DS IMEI1 	:"
-adb shell "service call iphonesubinfo 1 i32 2 | cut -c 52-66 | tr -d '.[:space:]'"
-echo . 
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 1 i32 2 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android4dsimei1=%%i
+echo ANDROID 4 DS IMEI1 	: %android4dsimei1% >> %summary%
 
-echo echo|set /p="ANDROID 5 SS IMEI 	:"
-adb shell "service call iphonesubinfo 3 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 3 | cut -c 52-66 | tr -d '.[:space:])'"`) do set android5ssimei=%%i
+echo ANDROID 5 SS IMEI  	: %android5ssimei% >> %summary%
 
-echo echo|set /p="ANDROID 5 DS IMEI0 	:"
-adb shell "service call iphonesubinfo 3 i32 1 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 3 i32 1 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android5dsimei0=%%i
+echo ANDROID 5 DS IMEI0 	: %android5dsimei0% >> %summary%
 
-echo echo|set /p="ANDROID 5 DS IMEI1 	:"
-adb shell "service call iphonesubinfo 3 i32 2 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 3 i32 2 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android5dsimei1=%%i
+echo ANDROID 5 DS IMEI1 	: %android5dsimei1% >> %summary%
 
-echo echo|set /p="ANDROID 6-10 SS IMEI 	:"
-adb shell "service call iphonesubinfo 4 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 4 | cut -c 52-66 | tr -d '.[:space:]'\)\'\)\'"`) do set android6to10ssimei=%%i
+echo ANDROID 6-10 SS IMEI 	: %android6to10ssimei% >> %summary%
 
-echo echo|set /p="ANDROID 6-10 DS IMEI0	:"
-adb shell "service call iphonesubinfo 4 i32 1 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 4 i32 1 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android6to10dsimei0=%%i
+echo ANDROID 6-10 DS IMEI0 	: %android6to10dsimei0% >> %summary%
 
-echo echo|set /p="ANDROID 6-10 DS IMEI1	:"
-adb shell "service call iphonesubinfo 4 i32 2 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 4 i32 2 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android6to10dsimei1=%%i
+echo ANDROID 6-10 DS IMEI1 	: %android6to10dsimei1% >> %summary%
 
-echo echo|set /p="ANDROID 6-10 DS IMEI2	:"
-adb shell "service call iphonesubinfo 4 i32 4 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 4 i32 4 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android6to10dsimei2=%%i
+echo ANDROID 6-10 DS IMEI2 	: %android6to10dsimei2% >> %summary%
 
-echo echo|set /p="ANDROID 11 SS IMEI 	:"
-adb shell "service call iphonesubinfo 5 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 5 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android11ss=%%i
+echo ANDROID 11 SS IMEI	: %android11ss% >> %summary%
 
-echo echo|set /p="ANDROID 11 DS IMEI0	:"
-adb shell "service call iphonesubinfo 5 i32 1 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 5 i32 1 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android11dsimei0=%%i
+echo ANDROID 11 DS IMEI0 	: %android11dsimei0% >> %summary%
 
-echo echo|set /p="ANDROID 11 DS IMEI1	:"
-adb shell "service call iphonesubinfo 5 i32 2 | cut -c 52-66 | tr -d '.[:space:]'"
-echo .
+for /f "usebackq delims=" %%i in (`adb shell "service call iphonesubinfo 5 i32 2 | cut -c 52-66 | tr -d '.[:space:]'\)\'"`) do set android11dsimei1=%%i
+echo ANDROID 11 DS IMEI1 	: %android11dsimei1% >> %summary%
+
+type %summary%
 
 adb shell getprop > "_info-adb-all-%device%-%hwlevel%-%hwversion%-%buildid%-%incremental%-%cpuid%.txt"
-@pause
+pause
