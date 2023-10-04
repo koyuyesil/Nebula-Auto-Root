@@ -7,10 +7,11 @@
 ::@for /f "tokens=2 delims=: " %%x in ('dir %PRD%*.img /b ^| findstr twrp*') do (@set filex=%%x)
 ::@for /f "tokens=2 delims=: " %%y in ('dir *%PRD%.zip /b ^| findstr twrp-installer*') do (@set filey=%%y)
 ::@for /f "tokens=2 delims=: " %%z in ('dir *.zip /s /b ^| findstr Magisk*') do (@set filez=%%z)
+::@set CONCRATES=recovery
 @set filex=%CONCRATES%\%PRD%_recovery.img
 @set filey=%CONCRATES%\%PRD%_recovery.zip
-@set filez=Magisk-v24.3.zip
-@set rootapk=Magisk-v24.3.apk
+@set filez=Magisk-v25.2.zip
+@set rootapk=Magisk-v25.2.apk
 
 @echo RECOVERY BOOTING
 @fastboot boot %filex% 2> nul

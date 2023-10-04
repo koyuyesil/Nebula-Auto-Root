@@ -30,7 +30,7 @@ pause
 @for /f "tokens=2 delims=: " %%i in ('fastboot %* getvar product 2^>^&1 ^| findstr /r /c:"product:"') do (@set dc=%%i)
 
 @set rPth=%CONCRATES%\%dc%
-::@set rPth=twrp_%dc%
+::@set rPth=recovery\%dc%
 
 @set prms=--disable-verity --disable-verification
 @echo FLASHING CUSTOM RECOVERY IMAGE
@@ -80,19 +80,19 @@ ECHO ---%sName%---
 @ECHO SENDING TWRP SCRIPT....
 @adb push %rPth%_recovery.zip /sdcard
 @ECHO SENDING ROOT SCRIPT....
-@adb push Magisk-v24.3.zip /sdcard
-@adb push Magisk-v24.3.apk /sdcard
+@adb push Magisk-v25.2.zip /sdcard
+@adb push Magisk-v25.2.apk /sdcard
 @ECHO TWRP SCRIPT RUNNING
 @adb shell twrp install /sdcard/%dc%_recovery.zip 2> nul || @echo "full versiyon yok"
 @timeout -t 60 >nul
 @ECHO ROOT SCRIPT RUNNING
-@adb shell twrp install /sdcard/Magisk-v24.3.zip
+@adb shell twrp install /sdcard/Magisk-v25.2.zip
 @ECHO ROOT FINISH
 
 ::@ECHO ANDROID SIDELOAD ACILIYOR....
 ::@adb shell "twrp sideload" 2> nul && @timeout -t 8
 ::@ECHO ROOT BETIK CALISTIRILIYIOR
-::@adb sideload Magisk-v24.3.zip 2> nul
+::@adb sideload Magisk-v25.2.zip 2> nul
 ::@ECHO ROOT ISLEMI TAMAMLANDI
 ::@ECHO SIDELOAD KAPATILDI && @timeout -t 8
 

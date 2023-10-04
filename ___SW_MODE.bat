@@ -43,21 +43,17 @@ echo User selected %1, device Id %device_serial%. Device in %device_description%
 echo 1. Reboot Android
 echo 2. Reboot Recovery
 echo 3. Reboot Fastboot
+echo 4. Reboot Sideload
 
 @set /p selection=Enter number from above menu:
 if not '%selection%'=='' set selection=%selection:~0,1%
 if '%selection%'=='1' goto reboot
 if '%selection%'=='2' goto recovery
 if '%selection%'=='3' goto bootloader
+if '%selection%'=='4' goto sideload
 echo "%selection%" is not valid please try again
 rem goto end
 rem @exit /b 0
-
-
-
-
-
-
 
 :SetVar
 @rem Burada yeni değişkenler üretiliyor
@@ -75,14 +71,24 @@ cls
 echo DEVICE REBOOTING TO ANDROID
 %_mode% -s %device_serial% reboot
 goto end
+
 :recovery
 cls
 echo DEVICE REBOOTING TO RECOVERY
 %_mode% -s %device_serial% reboot recovery
+::fastbootd modunda reboot recovery var
 goto end
+
 :bootloader
 cls
 echo DEVICE REBOOTING TO FASTBOOT
 %_mode% -s %device_serial% reboot bootloader
 %_mode% -s %device_serial% reboot-bootloader
 goto end
+
+:sideload
+cls
+echo DEVICE REBOOTING TO SIDELOAD OR MI ASSISTANT MODE
+%_mode% -s %device_serial% reboot sideload
+goto end
+::fastbootd komutları ekle

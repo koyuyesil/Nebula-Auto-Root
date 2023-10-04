@@ -25,23 +25,23 @@ goto start
 
 :CHOICE1
 echo You entered 1
-adb shell "su -c setprop sys.usb.config diag,adb"
+adb shell "setprop sys.usb.config diag,adb"
 goto end
 :CHOICE2
 echo You entered 2
-adb shell "su -c setprop sys.usb.config diag,diag_mdm,adb"
+adb shell "setprop sys.usb.config diag,diag_mdm,adb"
 goto end
 :CHOICE3
 echo You entered 3
-adb shell "su -c setprop sys.usb.config diag,serial_cdev,rmnet,adb"
+adb shell "setprop sys.usb.config diag,serial_cdev,rmnet,adb"
 goto end
 :CHOICE4
 echo You entered 4
-adb shell "su -c setprop sys.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb"
+adb shell "setprop sys.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb"
 goto end
 :CHOICE5
 echo You entered 5
-adb shell "su -c setprop sys.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb"
+adb shell "setprop sys.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb"
 goto end
 :end
 echo PLEASE FOLLOW DEVICE SCREEN AND GIVE ROOT PERMISSIONS

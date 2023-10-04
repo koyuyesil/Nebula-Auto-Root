@@ -1,7 +1,8 @@
 @for /f "delims=" %%i in ('@adb shell getprop ro.build.product') do @set product=%%i
+@for /f "delims=" %%i in ('@adb shell getprop ro.product.device') do @set device=%%i
 @for /f "delims=" %%i in ('@adb shell getprop ro.boot.hwlevel') do @set hwlevel=%%i
 @for /f "delims=" %%i in ('@adb shell getprop ro.boot.hwversion') do @set hwversion=%%i
-@set BackupFolder=Backups\%product%-EFS-Backups-%date:~10%%date:~7,2%%date:~4,2%%time:~0,2%%time:~3,2%%time:~6,2%-%hwlevel%-%hwversion%
+@set BackupFolder=Backups\%device%-EFS-Backups-%date:~10%%date:~7,2%%date:~4,2%%time:~0,2%%time:~3,2%%time:~6,2%-%hwlevel%-%hwversion%
 @md %BackupFolder%
 
 @ECHO BOLUM LISTESI

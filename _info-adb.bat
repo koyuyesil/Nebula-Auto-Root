@@ -1,3 +1,9 @@
+@echo CLEANUP
+@del *.txt
+@for /d /r %%F in (-*) do rd "%%F" /s
+@echo READING INFO
+
+
 @echo off
 for /f "delims=" %%i in ('adb shell getprop ro.build.product') do set product=%%i
 for /f "delims=" %%i in ('adb shell getprop ro.system.build.id') do set buildid=%%i
